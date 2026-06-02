@@ -1,1 +1,25 @@
+//maximum subarray avg 1
+
+class Solution {
+public:
+    double findMaxAverage(vector<int>& nums, int k) {
+        long long sum = 0;
+
+        // first window
+        for(int i = 0; i < k; i++) {
+            sum += nums[i];
+        }
+
+        long long maxSum = sum;
+
+        // slide window
+        for(int i = k; i < nums.size(); i++) {
+            sum += nums[i];
+            sum -= nums[i-k];
+            maxSum = max(maxSum, sum);
+        }
+
+        return (double)maxSum / k;
+    }
+};
 

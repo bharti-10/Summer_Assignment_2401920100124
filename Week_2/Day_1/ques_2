@@ -1,1 +1,24 @@
+// first unique character in a string
 
+class Solution {
+public:
+    int firstUniqChar(string s) {
+      
+      int n=s.size();
+      vector<int>hash(26 ,0);
+      for(int i=0;i<n;i++)
+      {
+        char ch=s[i];
+        int value=ch-'a';
+        hash[value]++;
+      }
+      for(int i=0;i<n;i++)
+      {
+        char ch=s[i];
+        int value=ch-'a';
+        if(hash[value]==1)
+        return i;
+      }
+       return -1;
+    }
+};

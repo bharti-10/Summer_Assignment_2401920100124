@@ -1,1 +1,28 @@
+//RANSOM NOTE
 
+
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+       int n=magazine.size() ;
+       vector<int>hash(26, 0);
+       for(int i=0;i<n;i++)
+       {
+        char ch=magazine[i];
+        int value=ch-'a';
+        hash[value]++;
+       }
+       for(int i=0;i<ransomNote.size();i++)
+       {
+        char  ch= ransomNote[i];
+        int value= ch-'a';
+        if(hash[value]>0)
+        {
+            hash[value]--;
+        }
+        else 
+           return false;
+       }
+       return true;
+    }
+};

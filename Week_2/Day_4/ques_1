@@ -1,0 +1,25 @@
+//Reverse words in a string III
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        int i = 0;
+        int j = 0;
+        int n = s.size();
+        for (int j = 0; j <= s.size(); j++) {
+            if (s[j] == ' ' || j == n) {
+                int start = i;
+                int end = j - 1;
+                while (start < end) {
+                    swap(s[start], s[end]);
+                    start++;
+                    end--;
+                }
+                i = j + 1;
+            }
+
+            
+        }
+        return s;
+    }
+};

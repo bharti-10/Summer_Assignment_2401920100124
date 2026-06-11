@@ -1,2 +1,60 @@
 //decode string
 
+class Solution {
+public:
+bool isnum(int n)
+{
+    if(n>='0'  && n<='9')
+    {
+        return true;
+    }
+    return false;
+}
+bool ischar(char ch)
+{
+    if((ch>='a' && ch<='z') || (ch>='A' && ch<='Z'))
+    {
+        return true;
+    }
+    return false;
+}
+    string decodeString(string s) {
+        
+        stack<int>st1;
+        stack<string>st2;
+        int num=0;
+        string curr="";
+        for(char ch: s)
+        { 
+            if(isnum(ch))
+            {
+             num=num*10 + (ch-'0');
+            }
+            else if( ch=='[')
+            {
+                st1.push(num);
+                st2.push(curr);
+                num=0;
+                curr="";
+            }
+            else if(ch==']')
+            {
+                int k=st1.top();
+                st1.pop();
+                string prev= st2.top();
+                st2.pop();
+                string neww="";
+                while(k--)
+                {
+                  neww= neww+curr;
+                }
+                curr=prev+neww;
+            }
+            else
+            {
+                curr=curr+ch;
+            }
+        }
+        return curr;
+    }
+};

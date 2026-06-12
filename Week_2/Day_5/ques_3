@@ -1,0 +1,48 @@
+//longest palindromic string
+
+
+bool ispalindrome(int i, int j , string&s )
+{
+    while(i < j)
+    {
+        if(s[i] != s[j])
+        {
+            return false;
+        }
+
+        i++;
+        j--;
+    }
+
+    return true;
+}
+class Solution {
+public:
+    string longestPalindrome(string s) {
+
+        int n=s.size();
+       
+        int mx=0;
+        string str="";
+        for (int i = 0; i < s.size()-1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (s[i] == s[j]) {
+                    if (ispalindrome(i, j, s)) {
+                        int length = j - i + 1;
+                        if (length > mx) {
+                            mx = length;
+                             str = s.substr(i, length);
+                        }
+                    }
+                }
+            }
+        }
+        if(mx==0) 
+        {
+            string ans="";
+            ans=ans+s[0];
+            return ans;
+        }
+        return str;
+    }
+};

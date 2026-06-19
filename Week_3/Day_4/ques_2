@@ -1,1 +1,47 @@
 //evaluate reverse polish notation
+
+
+class Solution {
+public:
+bool isop(string op){
+    if(op== "+" ||op== "-" ||op== "/" ||op== "*" ||op== "%" )
+    {
+        return true;
+    }
+    return false;
+}
+int perform(int num1, int num2, string op)
+{
+    if(op=="+") return num1+ num2;
+    if(op=="-") return num1- num2;
+    if(op=="%") return num1% num2;
+    if(op=="*") return num1* num2;
+    if(op=="/") return num1/ num2;
+    return 0;
+}
+    int evalRPN(vector<string>& tokens) {
+        int n=tokens .size();
+        stack<int>num;
+        stack<string>op;
+        for(int i=0;i<n;i++)
+        {
+            if(!isop(tokens[i]))
+            {
+               num.push(stoi(tokens[i]));
+            }
+            else
+            {
+                if(num.size()>=2)
+                {
+                    int num1= num.top();
+                    num.pop();
+                    int num2= num.top();
+                    num.pop();
+                    num.push(perform(num2, num1, tokens[i]));
+                }
+                
+            }
+        }
+        return num.top();
+    }
+};

@@ -1,0 +1,40 @@
+//zig zag traversal
+
+class Solution {
+public:
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+       vector<vector<int>>ans;
+       if(root==NULL) return ans;
+       queue<TreeNode*>q;
+       bool zigzag=false;
+       q.push(root);
+       int pos;
+       while(!q.empty())
+       { 
+        int size=q.size();
+        vector<int>temp(size);
+        for(int i=0;i<size;i++)
+        {  
+            TreeNode* node= q.front();
+            q.pop();
+        if(zigzag)
+        {
+             pos=size-i-1;
+        }
+        else
+        {
+            pos=i;
+        }
+        temp[pos]=node->val;
+        if(node->left)
+        {
+            q.push(node->left);
+        }
+        if(node->right) q.push(node->right);
+        }
+        zigzag=!zigzag;
+        ans.push_back(temp);
+       }
+       return ans; 
+    }
+};

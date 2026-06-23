@@ -1,0 +1,16 @@
+//Validate bst
+class Solution {
+    bool isvalid(TreeNode* root, long long maxi, long long mini)
+    {
+        if(root==NULL) return true;
+        if(root->val >= maxi || root->val<= mini) return false;
+        return isvalid(root->left, root->val, mini) && 
+        isvalid(root->right, maxi, root->val);
+    
+    }
+public:
+    bool isValidBST(TreeNode* root) {
+      
+        return isvalid(root, LLONG_MAX, LLONG_MIN);
+    }
+};

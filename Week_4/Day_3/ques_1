@@ -1,1 +1,27 @@
 
+
+//search in a bst
+
+
+class Solution {
+public:
+    TreeNode* searchBST(TreeNode* root, int val) {
+        if(root==NULL) return NULL;
+        TreeNode* node=root;
+        while(node && node->val!=val)
+        {
+            if(node->val> val) 
+            {
+                node=node->left;
+            }
+            else
+            {
+                node=node->right;
+            }
+        }
+        return node;
+    }
+};
+
+
+

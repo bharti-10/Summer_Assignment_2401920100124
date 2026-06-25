@@ -1,0 +1,19 @@
+//diameter of binary tree
+
+class Solution {
+public:
+int height(TreeNode* root)
+{  if(root==NULL) return 0;
+
+   int leftheight=height(root->left);
+   int rightheight=height(root->right);
+    int currdia= max(leftheight+ rightheight , currdia);
+    return max ()
+
+}
+    int diameterOfBinaryTree(TreeNode* root) {
+        height(root);
+
+
+    }
+};

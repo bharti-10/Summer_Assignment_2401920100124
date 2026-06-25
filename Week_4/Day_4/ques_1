@@ -1,1 +1,18 @@
 
+//path sum
+
+class Solution {
+public:
+bool solve(TreeNode* root, int targetSum , int currsum)
+{
+    if(root==NULL) return false;
+    currsum += root->val;
+    if(root->left==NULL && root->right==NULL) return targetSum==currsum;
+    
+    return solve(root->left, targetSum , currsum) || solve(root->right, targetSum , currsum);
+}
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        int currsum=0;
+        return solve(root, targetSum , currsum);
+    }
+};
